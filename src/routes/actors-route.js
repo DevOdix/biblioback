@@ -8,4 +8,19 @@ const router = express.Router();
 router.post('/login',actorsController.login);
 
 
-router.post('/signup',actorsController.signup);
+router.post('/signup',
+    [
+    check('name')
+      .not()
+      .isEmpty(),
+    check('email')
+      .normalizeEmail()
+      .isEmail(),
+    check('password').isLength({ min: 6 })
+    ]
+
+,actorsController.signup);
+
+router.get('/',actorsController.getActors);
+
+module.exports = router;

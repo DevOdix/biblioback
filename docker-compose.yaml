@@ -1,18 +1,9 @@
-version: '3.2'
+version: '3'
 services:
-  biblio-frontend-image:
-    image: registry.gitlab.com/medcheffi/bibliofront
-    container_name: biblio-frontend-image
-    depends_on:
-      - biblio-backend-image
+  postgres:
+    image: 'postgres:11.4'
     ports:
-      - 3000:3000
-
-
-  biblio-backend-image:
-
-    image: registry.gitlab.com/medcheffi/bibliobackend
-    container_name: biblio-backend-image
-    ports:
-      - 8081:8081
+      - 5432
+    environment:
+      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
 

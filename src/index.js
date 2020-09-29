@@ -6,18 +6,51 @@
 
 
 //Load express module with `require` directive
-var express = require('express')
+var express = require('express');
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+const actorsRoutes = require('./routes/actors-route');
+const livresRoutes = require('./routes/livres-route');
+
 var app = express()
 
-//Define request response in root URL (/)
-app.get('/', function (req, res) {
-  res.send('Hello World 22!!!!')
+app.use(bodyParser.json());
+
+
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+
+  next();
+});
+
+app.use('/api/actors',actorsRoutes); 
+
+app.use('/api/livres',livresRoutes); 
+
+app.get('/',(req,res) => {
+  res.send('Hello World')
 })
 
-//Launch listening server on port 8081
-app.listen(8081, function () {
-  console.log('app listening on port 8081!')
+mongoose
+.connect(
+  'mongodb+srv://momo:sysroller87@bibliocluster-aptek.mongodb.net/biblio_db?retryWrites=true&w=majority',{useNewUrlParser: true,useUnifiedTopology : true}
+)
+.then(() => {
+  console.log('connexion à la base mongoDB')
+  app.listen(5000);
 })
+.catch(err => {
+  console.log(err);
+});
+
+ 
 
 
 //module.exports = require('./www')
