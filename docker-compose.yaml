@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 
 networks:
  kong-net:
@@ -74,7 +74,6 @@ services:
       #timeout: 2s
       #retries: 15
     ports:
-      - "8001:8001"
       - "8000:8000"
       - "8443:8443"
       - "127.0.01:8001:8001"
@@ -88,7 +87,7 @@ services:
     command: "-c prepare -a postgres -u postgresql://kong@kong-database:5432/konga_db"
     networks:
       - kong-net
-    restart: on-failure
+     #restart: on-failure
     links:
       - kong-database
     depends_on:
@@ -99,7 +98,7 @@ services:
   #######################################
   konga:
     image: pantsel/konga:next
-    restart: always
+     #restart: always
     networks:
         - kong-net
     environment:
