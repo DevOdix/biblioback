@@ -51,7 +51,6 @@ services:
   #######################################
   kong:
     image: kong:latest
-    restart: always
     networks:
       - kong-net
     environment:
@@ -64,8 +63,8 @@ services:
       KONG_ADMIN_ACCESS_LOG: /dev/stdout
       KONG_PROXY_ERROR_LOG: /dev/stderr
       KONG_ADMIN_ERROR_LOG: /dev/stderr 
-      KONG_ADMIN_LISTEN: 0.0.0.0:8031
-      KONG_ADMIN_LISTEN_SSL: 0.0.0.0:8433
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+      KONG_ADMIN_LISTEN_SSL: 0.0.0.0:8443
     depends_on:
       - kong-migration
       - kong-database
@@ -75,9 +74,9 @@ services:
       timeout: 2s
       retries: 15
     ports:
-      - "8031:8001"
-      - "8030:8000"
-      - "8433:8443"
+      - "8001:8001"
+      - "8000:8000"
+      - "8443:8443"
 
   #######################################
   # Konga database prepare
