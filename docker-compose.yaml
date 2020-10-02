@@ -11,7 +11,7 @@ services:
   #######################################
   kong-database:
     image: postgres:9.6
-    restart: always
+    #restart: always
     networks:
       - kong-net
     environment:
@@ -20,11 +20,11 @@ services:
       POSTGRES_PASSWORD : kong
     ports:
       - "5432:5432"
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "kong"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+    #healthcheck:
+      #test: ["CMD", "pg_isready", "-U", "kong"]
+     # interval: 5s
+     # timeout: 5s
+     # retries: 5
 
   #######################################
   # Kong database migration
@@ -34,7 +34,7 @@ services:
     command: "kong migrations bootstrap"
     networks:
       - kong-net
-    restart: on-failure
+    #restart: on-failure
     environment:
       KONG_DATABASE: postgres
       KONG_PG_HOST: kong-database
@@ -68,15 +68,17 @@ services:
     depends_on:
       - kong-migration
       - kong-database
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8001"]
-      interval: 5s
-      timeout: 2s
-      retries: 15
+    #healthcheck:
+      #test: ["CMD", "curl", "-f", "http://localhost:8001"]
+      #interval: 5s
+      #timeout: 2s
+      #retries: 15
     ports:
       - "8001:8001"
       - "8000:8000"
       - "8443:8443"
+      - "127.0.01:8001:8001"
+      - "127.0.01:8444:8444"
 
   #######################################
   # Konga database prepare
