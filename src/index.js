@@ -43,7 +43,7 @@ mongoose
   'mongodb+srv://momo:sysroller87@bibliocluster-aptek.mongodb.net/biblio_db?retryWrites=true&w=majority',{useNewUrlParser: true,useUnifiedTopology : true}
 )
 .then(() => {
-  console.log('connexion à la base mongoDB')
+  console.log('connexion à la base mongoDB ..')
   app.listen(5000);
 })
 .catch(err => {
