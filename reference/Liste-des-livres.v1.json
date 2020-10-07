@@ -6,11 +6,11 @@
   },
   "servers": [
     {
-      "url": "http://34.123.74.151:5000/"
+      "url": "http://34.123.74.151:5000/api/"
     }
   ],
   "paths": {
-    "api/livres/": {
+    "livres/": {
       "get": {
         "summary": "liste des livres",
         "tags": [],
