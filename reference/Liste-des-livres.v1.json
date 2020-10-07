@@ -2,18 +2,24 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Livres ",
-    "version": "1.0"
+    "version": "1.0",
+    "description": "API Gestion bibliothéque \n\ndesc\n\n\n\n",
+    "contact": {
+      "name": "Mohamed Dev"
+    }
   },
   "servers": [
     {
-      "url": "http://34.123.74.151:5000/api/"
+      "url": "http://34.123.74.151:5000/api"
     }
   ],
   "paths": {
-    "livres/": {
+    "/livres": {
       "get": {
         "summary": "liste des livres",
-        "tags": [],
+        "tags": [
+          "tags1.0"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -21,34 +27,29 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "descriptionLivre": {
-                      "type": "string"
-                    },
-                    "ident": {
-                      "type": "string"
-                    },
-                    "nomLivre": {
-                      "type": "string"
-                    }
+                  "type": "array",
+                  "items": {
+                    "type": "object"
                   }
                 },
-                "examples": {
-                  "livreItemExample": {
-                    "value": {
-                      "descriptionLivre": "Description LIvre 5",
-                      "ident": "66d1376c-9425-4399-91af-a2fa182eabb8",
-                      "nomLivre": "Livre 5"
-                    }
-                  }
-                }
+                "examples": {}
               }
             }
           }
         },
         "operationId": "get-api-livres",
-        "parameters": []
+        "parameters": [],
+        "description": "API Gestion des livres",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          }
+        }
       },
       "parameters": []
     }
@@ -56,5 +57,10 @@
   "components": {
     "schemas": {},
     "securitySchemes": {}
-  }
+  },
+  "tags": [
+    {
+      "name": "tags1.0"
+    }
+  ]
 }
