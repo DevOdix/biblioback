@@ -1,15 +1,58 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Liste des livres ",
+    "title": "Livres ",
     "version": "1.0"
   },
   "servers": [
     {
-      "url": "http://34.123.74.151:5000/api/livres"
+      "url": "http://34.123.74.151:5000/"
     }
   ],
-  "paths": {},
+  "paths": {
+    "api/livres/": {
+      "get": {
+        "summary": "liste des livres",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "descriptionLivre": {
+                      "type": "string"
+                    },
+                    "ident": {
+                      "type": "string"
+                    },
+                    "nomLivre": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "livreItemExample": {
+                    "value": {
+                      "descriptionLivre": "Description LIvre 5",
+                      "ident": "66d1376c-9425-4399-91af-a2fa182eabb8",
+                      "nomLivre": "Livre 5"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-api-livres",
+        "parameters": []
+      },
+      "parameters": []
+    }
+  },
   "components": {
     "schemas": {},
     "securitySchemes": {}
