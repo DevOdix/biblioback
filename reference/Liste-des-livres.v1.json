@@ -13,47 +13,7 @@
       "url": "http://34.123.74.151:5000/api"
     }
   ],
-  "paths": {
-    "/livres": {
-      "get": {
-        "summary": "liste des livres",
-        "tags": [
-          "tags1.0"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object"
-                  }
-                },
-                "examples": {}
-              }
-            }
-          }
-        },
-        "operationId": "get-api-livres",
-        "parameters": [],
-        "description": "API Gestion des livres",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {}
-              }
-            }
-          }
-        }
-      },
-      "parameters": []
-    }
-  },
+  "paths": {},
   "components": {
     "schemas": {},
     "securitySchemes": {}
